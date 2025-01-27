@@ -9,6 +9,7 @@ namespace Infra
         //recebe os valores de dentro do appsetings.json
         private IConfiguration _configuration;
 
+        //db transforma a requisição json para o objeto
         public DbSet<Users> Users { get; set; }
 
         public APIDBContext(IConfiguration configuration, DbContextOptions options) : base(options)
@@ -17,10 +18,19 @@ namespace Infra
         }
 
         // configuração de conexão com o DB
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        protected async override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var connectionString = _configuration.GetConnectionString("DefaultConnection");
-            optionsBuilder.UseMySQL(connectionString);
+            try {
+                
+                optionsBuilder.UseMySQL(connectionString!);
+
+            } catch {
+
+                throw new InvalidOperationException();
+
+            }
+            
         }
     }
 }

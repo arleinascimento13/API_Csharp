@@ -1,0 +1,10 @@
+﻿jwt config
+
+header
+- as informãções de tipo de token e o algoritmo de assinatura
+
+payload
+- os dados que deseja transmitir, seja informações do usuario ou autorizações
+
+assig
+- gerada apartir de um cabeçalho e do payload a partir de uma chave de assinatura

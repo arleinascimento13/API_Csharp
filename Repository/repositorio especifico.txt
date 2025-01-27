@@ -1,0 +1,12 @@
+﻿Se você quiser um repositório só para Produto, ainda pode criar um wrapper mais específico em torno do genérico:
+
+public class ProdutoRepository : Repository<Produto>
+{
+    public ProdutoRepository(AppDbContext context) : base(context)
+    {
+    }
+
+    // Adicione métodos específicos de Produto aqui, se necessário.
+}
+
+Isso te dá o melhor dos dois mundos: código reutilizável para todas as entidades e a possibilidade de adicionar lógica específica para Produto quando precisar.
